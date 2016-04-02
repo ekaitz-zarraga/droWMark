@@ -11,6 +11,9 @@ function! Prueba( blog, user )
     python import sys
     python sys.argv = [ vim.eval('a:blog'), vim.eval('a:user'), vim.eval('password'), vim.eval('@%') ]
     " Call script
-    pyfile drowmark.py
+    exe 'pyfile ' . escape(s:path, ' ') . '/drowmark.py'
+    "pyfile drowmark.py
 
 endfunction
+
+let s:path = escape(resolve(expand('<sfile>:p:h')),'\')
