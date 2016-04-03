@@ -1,5 +1,6 @@
 import sys
 from wordpress_xmlrpc import Client, WordPressPost
+from wordpress_xmlrpc.methods.posts import NewPost
 try:
     from configparser import ConfigParser
 except ImportError:
@@ -16,7 +17,7 @@ if not len(sys.argv) == 4:
     print('4 parameters needed:\n\turl username password file')
     raise
 
-url = 'http://' + sys.argv[0] + '/xmlrpc.php'
+url = 'https://' + sys.argv[0] + '/xmlrpc.php'
 username = sys.argv[1]
 password = sys.argv[2]
 postfile = sys.argv[3]
@@ -44,22 +45,35 @@ for line in f:
         continue
 f.close()
 
-# TODO Parse the INI part
+# Parse the INI part
+buf = StringIO.StringIO(postconfig)
+config = ConfigParser()
+config.readfp(buf)
 
-# buf = StringIO.StringIO(postconfig)
-# config = ConfigParser.ConfigParser()
-# config.readfp(buf)
-#     # TODO define the format for the metadata!
-# terms_names = {}
+terms_names = {}
+tags = config.get('wordpress', 'tags')
+terms_names['post_tag'] = map(lambda x: x.strip(),tags.split(','))
 
+categories = config.get('wordpress', 'categories')
+terms_names['category'] = map(lambda x: x.strip(),categories.split(','))
 
-# TODO take markdown, convert to HTML and put it
-# as post content
-postcontent = pypandoc.convert( postcontent, format='md', to='html')
-print postcontent #GOOD LOOKING BABY!
+post_status = config.get('wordpress','status')
 
+title = config.get('wordpress','title')
 
-# Wordpress related, the content is prepared and the config is read
-# wp = Client( url, username, password )
-# post = WordPressPost()
+# Take markdown, convert to HTML and put it as post content
+content = pypandoc.convert( postcontent, format='md', to='html' )
 
+# Wordpress related, create the post and the client:
+wp = Client( url, username, password )
+post = WordPressPost()
+
+post.title = title
+post.content = content
+post.post_status = post_status
+post.terms_names = terms_names
+post.id = wp.call(NewPost(post)) # Post it!
+
+print "Posted: " + post.title
+print "\nWith Status: " + post.post_status
+print "\nAnd ID: " + post.id
