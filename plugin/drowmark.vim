@@ -1,4 +1,4 @@
-function! Prueba( blog, user )
+function! PostWordPress( blog, user )
 
     " Get the blog password by user input
     call inputsave()
