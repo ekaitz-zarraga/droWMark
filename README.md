@@ -1,7 +1,6 @@
 # droWMark
 
 Vim plugin to post from VIM to Wordpress using Markdown.
-Still a sketch, it is **NOT** working.
 
 
 ## Notes
