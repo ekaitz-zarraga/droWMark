@@ -1,16 +1,21 @@
-function! PostWordPress( blog, user )
+function! PostWordPress()
+    call inputsave()
+    let l:user = input('Enter username: ')
+    call inputrestore()
+    echo '\n'
 
     " Get the blog password by user input
     echo 'Enter password: '
-    let password = s:getPass()
+    let l:password = s:getPass()
 
 
     " Prepare arguments for python script.
     python import vim
     python import sys
-    python sys.argv = [ vim.eval('a:blog'), vim.eval('a:user'), vim.eval('password'), vim.eval('@%') ]
+    let l:script = 'pyfile ' . escape(s:path, ' ') . '/drowmark.py'
+    python sys.argv = [ vim.eval('l:script'), vim.eval('l:user'), vim.eval('l:password'), vim.eval('@%') ]
     " Call script
-    exe 'pyfile ' . escape(s:path, ' ') . '/drowmark.py'
+    exe l:script
     "pyfile drowmark.py
 
 endfunction

@@ -14,10 +14,9 @@ import pypandoc
 # callable from outside VIM also.
 
 if not len(sys.argv) == 4:
-    print('4 parameters needed:\n\turl username password file')
-    raise
+    print('3 parameters needed:\n\t username password file')
+    raise BaseException
 
-url = 'https://' + sys.argv[0] + '/xmlrpc.php'
 username = sys.argv[1]
 password = sys.argv[2]
 postfile = sys.argv[3]
@@ -58,6 +57,9 @@ categories = config.get('wordpress', 'categories')
 terms_names['category'] = map(lambda x: x.strip(),categories.split(','))
 
 post_status = config.get('wordpress','status')
+
+url = config.get('wordpress','url')
+url = 'https://' + url + '/xmlrpc.php'
 
 title = config.get('wordpress','title')
 
