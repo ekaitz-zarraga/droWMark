@@ -12,12 +12,17 @@ function! PostWordPress()
     " Prepare arguments for python script.
     python import vim
     python import sys
-    let l:script = 'pyfile ' . escape(s:path, ' ') . '/drowmark.py'
+    let l:script = escape(s:path, ' ') . '/drowmark.py'
     python sys.argv = [ vim.eval('l:script'), vim.eval('l:user'), vim.eval('l:password'), vim.eval('@%') ]
     " Call script
-    exe l:script
+    exe 'pyfile ' . l:script
     "pyfile drowmark.py
 
+endfunction
+
+function! NewWordPress()
+    let l:template = escape(s:path, ' ') . '/../templates/drowmark.template'
+    exec 'read '. l:template
 endfunction
 
 " Get password without showing the echo in the screen
