@@ -18,7 +18,7 @@
   tags =
 
   # The URL of your blog.
-  # ('https://'  and 'xmlrpc.php' will be added in the automatically)
+  # ('https://'  and 'xmlrpc.php' will be added automatically)
   # Example: url = mycoolblog.wordpress.com
   url =
 
