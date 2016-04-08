@@ -41,5 +41,5 @@ endfunction
 
 let s:path = escape(resolve(expand('<sfile>:p:h')),'\')
 
-command NewWordPress call NewWordPress()
-command PostWordPress call PostWordPress()
+command! NewWordPress call NewWordPress()
+command! PostWordPress call PostWordPress()
