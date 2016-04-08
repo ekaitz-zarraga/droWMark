@@ -2,7 +2,7 @@ function! PostWordPress()
     call inputsave()
     let l:user = input('Enter username: ')
     call inputrestore()
-    echo ''
+    echo "\n"
 
     " Get the blog password by user input
     echo 'Enter password: '
