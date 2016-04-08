@@ -23,6 +23,7 @@ endfunction
 function! NewWordPress()
     let l:template = escape(s:path, ' ') . '/../templates/drowmark.template'
     exec 'read '. l:template
+    setlocal ft=drowmark
 endfunction
 
 " Get password without showing the echo in the screen
@@ -39,3 +40,6 @@ function! s:getPass()
 endfunction
 
 let s:path = escape(resolve(expand('<sfile>:p:h')),'\')
+
+command NewWordPress call NewWordPress()
+command PostWordPress call PostWordPress()
