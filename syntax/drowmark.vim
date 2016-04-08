@@ -1,11 +1,24 @@
-let b:current_syntax = ''
-unlet b:current_syntax
-syntax include @INI syntax/dosini.vim
+" Defines the highlighting for the header section, the content is plain
+" MarkDown with its own syntax.
 
-syntax region htmlCode start='\[wordpress]$' end="---$"me=s-1 contains=@INI,@Spell
 
-let b:current_syntax = ''
-unlet b:current_syntax
+" Define some keywords for the headers
+syntax keyword headerKeyword title status categories tags url containedin=headerLabel
+highlight link headerKeyword Keyword
+syntax keyword headerHead wordpress containedin=headerSection
+highlight link headerHead Constant
+
+" Header section highlighting
+syntax match headerSection /\[.*\]$/ containedin=headerIni
+highlight link headerSection Special
+syntax match headerLabel /.*=/ containedin=headerIni contains=headerComment
+highlight link headerLabel Type
+syntax match headerComment /[#;].*$/ containedin=headerIni
+highlight link headerComment Comment
+
+syntax region headerIni start='\[wordpress]$' end="---$"me=s-1 contains=@Spell
+
+
+" Markdown syntax for the content
 syntax include @MD syntax/markdown.vim
-
-syntax region texCode start="---$" end="\%$" contains=@MD,@Spell
+syntax region contentMarkdown start="---$" end="\%$" contains=@MD,@Spell
