@@ -48,6 +48,21 @@ Most of the plugin managers, like Vundle (I recommend this one) are able to
 download the code of the plugin from gitHub and install it correctly, putting
 the directory tree under `.vim/bundle/droWMark` directory.
 
+### Dependencies
+
+It is necessary to have Vim compiled with `+python` option.
+
+Dependencies for the python script are:
+
+- PyPandoc package, wich also depends on Pandoc  
+  `pip install pypandoc`
+
+- Wordpress XML RPC  
+  `pip install python_wordpress_xmlrpc`
+
+- ConfigParser package  
+  `pip install configparser`
+
 ## Notes
 
 ### Vim independent
