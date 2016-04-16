@@ -6,7 +6,7 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 import StringIO
-import io
+import codecs
 import pypandoc
 
 # Get arguments from sys.argv, the idea is to
@@ -30,7 +30,7 @@ postconfig = ''
 postcontent = ''
 
 inheader = True
-f = open(postfile, 'r')
+f = codecs.open(postfile, 'r', 'utf-8')
 for line in f:
     if inheader:
         # FIXME Improve this check
