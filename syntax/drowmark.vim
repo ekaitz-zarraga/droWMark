@@ -7,6 +7,8 @@ syntax keyword headerKeyword title status categories tags url containedin=header
 highlight link headerKeyword Keyword
 syntax keyword headerHead wordpress containedin=headerSection
 highlight link headerHead Constant
+syntax keyword headerFieldKeyword draft published containedin=headerIni
+highlight link headerFieldKeyword Constant
 
 " Header section highlighting
 syntax match headerSection /\[.*\]$/ containedin=headerIni
