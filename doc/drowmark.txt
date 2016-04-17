@@ -80,6 +80,7 @@ The tag list for the post. Comma separated list. Could contain spaces.
 Example: >
     tags = markdown, wordpress, vim, plugin
 <
+
 url                                                                       *url*
 
 The URL of the blog. "https://" and "/xmlrpc" will be added automatically.
