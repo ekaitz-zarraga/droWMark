@@ -14,7 +14,7 @@ status =
 categories =
 
 # The tags of your blog post. Comma separated.
-# Example: tags = Category One, Cat Two
+# Example: tags = tag one, tag two
 tags =
 
 # The URL of your blog.

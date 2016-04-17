@@ -1,0 +1,105 @@
+*drowmark.txt* Post to WordPress using MarkDown
+*drowmark*
+
+             ___             __      __  _____                __~
+          __/ _/______  ____/  \    /  \/     \ _____ _______|  | __~
+         / __ |\_  __ \/  _ \   \/\/   /  \ /  \\__  \\_  __ \  |/ /~
+        / /_/ | |  | \/  <_> )        /    Y    \/ __ \|  | \/    <~
+        \____ | |__|   \____/ \__/\  /\____|__  /____  |__|  |__|_ \~
+             \/                    \/         \/     \/           \/~
+
+            Post to WordPress using Pandoc flavoured Markdown!~
+                            Without exiting Vim!~
+
+==============================================================================
+CONTENTS                                                   *drowmark-contents*
+
+    1. Intro .....................................|drowmark-intro|
+        1.2 Quick Start...........................|drowmark-quickstart|
+    2. Functionality..............................|drowmark-functionality|
+        2.1 Python file...........................|drowmark-python|
+    3. Commands...................................|drowmark-commands|
+    4. Configuration..............................|drowmark-configuration|
+    5. About......................................|drowmark-about|
+    6. License....................................|drowmark-license|
+
+==============================================================================
+1. Intro                                                      *drowmark-intro*
+
+
+------------------------------------------------------------------------------
+1.2 Quick Start                                          *drowmark-quickstart*
+
+
+==============================================================================
+2. Functionality                                      *drowmark-functionality*
+
+------------------------------------------------------------------------------
+2.1 Python file                                              *drowmark-python*
+
+
+==============================================================================
+3. Commands                                                *drowmark-commands*
+
+:NewWordPress                                                  *:NewWordPress*
+
+Appends a template at the cursor position and change the filetype to drowmark.
+
+:PostWordPress                                                *:PostWordPress*
+
+Asks the user for the username and password for the wordpress account and
+uploads the current file. Current file MUST be saved to be uploaded. The post
+will be uploaded with the status marked on the configuration, if the |status|
+is published it will be posted as public automatically.
+
+==============================================================================
+4. Configuration                                      *drowmark-configuration*
+
+title                                                                  *title*
+
+Defines the title of the post. Example: >
+    title = Mi cool blog entry about droWMark
+<
+
+status                                                                 *status*
+
+The status of the post. Options are: `draft`, `published`, `pending`,
+`private`.
+
+
+categories                                                         *categories*
+
+The category list for the post. Comma separated list. Could contain spaces.
+Example: >
+    categories = Category One, Cat Two
+<
+
+tags                                                                     *tags*
+
+The tag list for the post. Comma separated list. Could contain spaces.
+Example: >
+    tags = markdown, wordpress, vim, plugin
+<
+url                                                                       *url*
+
+The URL of the blog. "https://" and "/xmlrpc" will be added automatically.
+Example: >
+    url = miblog.wordpress.com
+<
+
+==============================================================================
+5. About                                                       *drowmark-about*
+
+    Author and mantainer:
+        Ekaitz Zárraga (GitHub: ekaitz-zarraga)
+
+    Find the latest version at GitHub:
+        http://github.com/ekaitz-zarraga/drowmark
+
+==============================================================================
+6. License                                                   *drowmark-license*
+
+    droWMark is distributed under GPLv3 license.
+    See http://www.gnu.org/licenses/gpl.html
+
+ vim:tw=78:sw=4:ft=help:norl:
