@@ -49,39 +49,39 @@ Appends a template at the cursor position and change the filetype to drowmark.
 
 Asks the user for the username and password for the wordpress account and
 uploads the current file. Current file MUST be saved to be uploaded. The post
-will be uploaded with the status marked on the configuration, if the |status|
-is published it will be posted as public automatically.
+will be uploaded with the status marked on the configuration, if the
+|drowmark-status| is published it will be posted as public automatically.
 
 ==============================================================================
 4. Configuration                                      *drowmark-configuration*
 
-title                                                                  *title*
+title                                                         *drowmark-title*
 
 Defines the title of the post. Example: >
     title = Mi cool blog entry about droWMark
 <
 
-status                                                                 *status*
+status                                                        *drowmark-status*
 
 The status of the post. Options are: `draft`, `published`, `pending`,
 `private`.
 
 
-categories                                                         *categories*
+categories                                                *drowmark-categories*
 
 The category list for the post. Comma separated list. Could contain spaces.
 Example: >
     categories = Category One, Cat Two
 <
 
-tags                                                                     *tags*
+tags                                                            *drowmark-tags*
 
 The tag list for the post. Comma separated list. Could contain spaces.
 Example: >
     tags = markdown, wordpress, vim, plugin
 <
 
-url                                                                       *url*
+url                                                              *drowmark-url*
 
 The URL of the blog. "https://" and "/xmlrpc" will be added automatically.
 Example: >
