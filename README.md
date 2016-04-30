@@ -1,6 +1,7 @@
 # droWMark
 
-Vim plugin to post from VIM to WordPress using Pandoc-Markdown.
+Vim plugin to post from VIM to WordPress using
+[Pandoc-Markdown](http://pandoc.org/README.html#pandocs-markdown).
 
 It uses an special template in files, they are a mix between an INI header and
 a MarkDown content. There is a template in `templates` directory.
