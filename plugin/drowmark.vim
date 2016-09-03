@@ -10,13 +10,18 @@ function! PostWordPress()
 
 
     " Prepare arguments for python script.
-    python import vim
-    python import sys
+    if( has('python') )
+        let inter='python'
+        let interfile='pyfile'
+    else
+        return "No python interpreter"
+    endif
+    exe inter . ' ' .'import vim'
+    exe inter . ' ' .'import sys'
     let l:script = escape(s:path, ' ') . '/drowmark.py'
-    python sys.argv = [ vim.eval('l:script'), vim.eval('l:user'), vim.eval('l:password'), vim.eval('@%') ]
+    exe inter.' ' . 'sys.argv = [ vim.eval("l:script"), vim.eval("l:user"), vim.eval("l:password"), vim.eval("@%") ]'
     " Call script
-    exe 'pyfile ' . l:script
-    "pyfile drowmark.py
+    exe interfile .' ' . l:script
 
 endfunction
 

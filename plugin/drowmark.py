@@ -5,7 +5,7 @@ try:
     from configparser import ConfigParser
 except ImportError:
     from ConfigParser import ConfigParser
-import StringIO
+from io import StringIO
 import codecs
 import pypandoc
 
@@ -45,7 +45,7 @@ for line in f:
 f.close()
 
 # Parse the INI part
-buf = StringIO.StringIO(postconfig)
+buf = StringIO(postconfig)
 config = ConfigParser()
 config.readfp(buf)
 
@@ -76,6 +76,6 @@ post.post_status = post_status
 post.terms_names = terms_names
 post.id = wp.call(NewPost(post)) # Post it!
 
-print "Posted: " + post.title
-print "\nWith Status: " + post.post_status
-print "\nAnd ID: " + post.id
+print( "Posted: " + post.title )
+print( "\nWith Status: " + post.post_status )
+print( "\nAnd ID: " + post.id )
