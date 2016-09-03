@@ -13,6 +13,9 @@ function! PostWordPress()
     if( has('python') )
         let inter='python'
         let interfile='pyfile'
+    elseif( has('python3') )
+        let inter='python3'
+        let interfile='py3file'
     else
         return "No python interpreter"
     endif
