@@ -33,6 +33,12 @@ following command:
 This will ask for the username and the password before publishing the post in
 WordPress.
 
+### Upload Images
+
+All the URLs of the images are checked. If the URL of the image is a relative
+path to a local image, it's uploaded *automagically* and the URL is changed to
+the uploaded media file URL.
+
 ## Installation
 
 Installation could be done using a plugin manager or manually.
@@ -55,8 +61,8 @@ It is necessary to have Vim compiled with `+python` option.
 
 Dependencies for the python script are:
 
-- PyPandoc package, wich also depends on Pandoc  
-  `pip install pypandoc`
+- Panflute package, wich also depends on Pandoc  
+  `pip install panflute`
 
 - Wordpress XML RPC  
   `pip install python_wordpress_xmlrpc`
