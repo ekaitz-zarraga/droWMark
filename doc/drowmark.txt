@@ -132,6 +132,12 @@ The URL of the blog. "https://" and "/xmlrpc" will be added automatically.
 Example: >
     url = miblog.wordpress.com
 <
+thumbnail                                                   *drowmark-thumbnail*
+
+The URL of Relative Path to the Post Thumbnail. If relative path, it will be
+uploaded automatically.
+Example: >
+    thumbnail = images/thumb.jpg
 
 ==============================================================================
 5. About                                                       *drowmark-about*

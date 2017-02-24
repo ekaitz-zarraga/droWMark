@@ -22,17 +22,20 @@ def imageURLs(elem, doc):
     if isinstance(elem, pf.Image):
         # Handles paths if they are relative to the post
         here = path.dirname( postfile )
-        url = path.join( here, elem.url ) # Make path absolute
-        if not path.exists(url):
-            return
-        mime = mimetypes.guess_type(url, strict = True)[0]
-        if not mime.split('/')[0] == 'image':
-            # It's not an image!
-            return
-
-        res = uploadFile(url, mime)
+        url  = path.join( here, elem.url ) # Make path absolute
+        mime = checkImage(url)
+        res  = uploadFile(url, mime)
         elem.url = res['url']
         return elem
+
+def checkImage(url):
+    if not path.exists(url):
+        return
+    mime = mimetypes.guess_type(url, strict = True)[0]
+    if not mime.split('/')[0] == 'image':
+        # It's not an image!
+        return
+    return mime
 
 def uploadFile( url, mime ):
 
@@ -90,7 +93,6 @@ for line in f:
 f.close()
 
 # Parse the INI part
-# TODO add thumbnail
 buf = StringIO(postconfig)
 config = ConfigParser()
 config.readfp(buf)
@@ -109,9 +111,16 @@ url = 'https://' + url + '/xmlrpc.php'
 
 title = config.get('wordpress','title')
 
+thumb_url = None
+if config.has_option('wordpress','thumbnail'):
+    thumbnail = config.get('wordpress', 'thumbnail')
+    here = path.dirname( postfile )
+    thumb_url = path.join( here, thumbnail ) # Make path absolute
+
 # Wordpress related, create the post
 WP = Client( url, username, password )
 post = WordPressPost()
+
 
 # Take markdown, convert to HTML and put it as post content
 #content = pypandoc.convert( postcontent, format='md',
@@ -129,6 +138,13 @@ post.title = title
 post.content = content
 post.post_status = post_status
 post.terms_names = terms_names
+
+if not thumb_url == None:
+    thumb_mime = checkImage(thumb_url)
+    if not thumb_mime == None:
+        response = uploadFile(thumb_url, thumb_mime)
+        post.thumbnail = response['id']
+
 post.id = WP.call(NewPost(post)) # Post it!
 
 print( "Posted: " + post.title )
