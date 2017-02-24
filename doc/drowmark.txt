@@ -14,8 +14,9 @@
 ==============================================================================
 CONTENTS                                                   *drowmark-contents*
 
-    1. Intro .....................................|drowmark-intro|
+    1. User guide ................................|drowmark-guide|
         1.2 Quick Start...........................|drowmark-quickstart|
+        1.2 Upload Images.........................|drowmark-image|
     2. Functionality..............................|drowmark-functionality|
         2.1 Python file...........................|drowmark-python|
     3. Commands...................................|drowmark-commands|
@@ -40,6 +41,13 @@ configuration template using Pandoc Flavoured Markdown.
 
 When the blog post is done, run |:PostWordPress| and enter the username and
 password and it will be posted in WordPress.
+
+------------------------------------------------------------------------------
+1.3 Upload Images
+
+If the post contains images, their URL is checked when |:PostWordPress| is
+called. If the URL is a relative path (from the post file) to an image, they
+are automatically uploaded and URLs are changed with the uploaded content URL.
 
 ==============================================================================
 2. Functionality                                      *drowmark-functionality*
@@ -124,6 +132,12 @@ The URL of the blog. "https://" and "/xmlrpc" will be added automatically.
 Example: >
     url = miblog.wordpress.com
 <
+thumbnail                                                   *drowmark-thumbnail*
+
+The URL of Relative Path to the Post Thumbnail. If relative path, it will be
+uploaded automatically.
+Example: >
+    thumbnail = images/thumb.jpg
 
 ==============================================================================
 5. About                                                       *drowmark-about*

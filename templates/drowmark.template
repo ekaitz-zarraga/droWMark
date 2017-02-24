@@ -22,6 +22,11 @@ tags =
 # Example: url = mycoolblog.wordpress.com
 url =
 
+# [OPTIONAL] Thumbnail image.
+# URL or Relative Path to the post file. If path, it will be automatically
+# uploaded.
+# Example: thumbnail = images/thumb.jpg
+# thumbnail =
 ---
 
 
