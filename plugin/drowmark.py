@@ -15,12 +15,13 @@ from os import path
 import mimetypes
 
 WP = None
+postfile = ''
 
 def imageURLs(elem, doc):
 
     if isinstance(elem, pf.Image):
         # Handles paths if they are relative to the post
-        here = path.dirname( __file__ )
+        here = path.dirname( postfile )
         url = path.join( here, elem.url ) # Make path absolute
         if not path.exists(url):
             return
