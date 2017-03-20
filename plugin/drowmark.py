@@ -33,6 +33,18 @@ def imageURLs(elem, doc):
         elem.url = res['url']
         return elem
 
+def codeBlocks(elem, doc):
+    """
+    If input is a CodeBlock, just tag it as a code piece and put the language.
+    WordPress can handle the highlighting
+    """
+    if isinstance(elem, pf.CodeBlock):
+        language = elem.classes[0]
+        print language
+        content  = elem.text
+        block = '[code language="%s"]\n%s\n[/code]' % (language, content)
+        return pf.RawBlock(block)
+
 def checkImage(url):
     """
     Checks if image path exists and if it's an image.
@@ -141,7 +153,7 @@ if __name__ == '__main__':
                                                 output_format='panflute',
                                                 standalone=True)
 
-    pf.run_filters( [ imageURLs ], doc = postdocument )
+    pf.run_filters( [ imageURLs, codeBlocks ], doc = postdocument )
     content = pf.convert_text(postdocument, input_format='panflute',
                                             output_format='html')
 
