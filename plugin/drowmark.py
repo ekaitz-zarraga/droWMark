@@ -39,10 +39,16 @@ def codeBlocks(elem, doc):
     WordPress can handle the highlighting
     """
     if isinstance(elem, pf.CodeBlock):
-        language = elem.classes[0]
-        print language
         content  = elem.text
-        block = '[code language="%s"]\n%s\n[/code]' % (language, content)
+        language = None
+        if len(elem.classes) >= 1:
+            language = elem.classes[0]
+
+        block = '[code'
+        if language:
+            block += ' language="%s"' % (language)
+        block += ']\n%s\n[/code]' % (content)
+
         return pf.RawBlock(block)
 
 def checkImage(url):
