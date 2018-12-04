@@ -1,4 +1,6 @@
+<a href="https://liberapay.com/ekaitz/">
 <img src="http://img.shields.io/liberapay/patrons/ekaitz.svg?logo=liberapay">
+</a>
 
 # droWMark
 
