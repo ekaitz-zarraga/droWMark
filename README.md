@@ -1,3 +1,5 @@
+<img src="http://img.shields.io/liberapay/patrons/ekaitz.svg?logo=liberapay">
+
 # droWMark
 
 Vim plugin to post from VIM to WordPress using
@@ -69,6 +71,19 @@ Dependencies for the python script are:
 
 - ConfigParser package  
   `pip install configparser`
+
+## Contributing
+
+This is a very small project I've made mostly for myself. This means a couple
+of interesting things:
+
+- It's flexible: New features could be added easily if requested.
+- It's easy to contribute: Just make a pull request, open an issue or whatever
+  you prefer.
+
+Being a small project it's not always good. I only develop this plugin during
+my free time and, since I'm a freelance, it's very difficult to find free time
+for my own coding. Contributions are welcome.
 
 ## Notes
 
